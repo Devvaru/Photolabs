@@ -15,7 +15,7 @@ const sampleDataForPhotoListItem = {
 };
 
 // Note: Rendering a single component to build components in isolation
-const App = (props) => {
+const App = () => {
 
   return (
     <div className="App">
