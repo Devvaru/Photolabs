@@ -1,4 +1,5 @@
-import React, { Fragment } from "react";
+import React, { useCallback, useState } from 'react';
+import PhotoFavButton from 'components/PhotoFavButton';
 
 import "../styles/PhotoListItem.scss";
 
@@ -6,9 +7,13 @@ const PhotoListItem = (props) => {
 
   const { id, location, imageSource, username, profile } = props;
 
+  const [favourite, setFavourite] = useState(false);
+  const changeFavourite = () => setFavourite((favourite === true) ? false : true);
+
   return (
     <div className="photo-list__item">
       <div >
+        <PhotoFavButton favourite={favourite} changeFavourite={changeFavourite} />
         <img className="photo-list__image" src={imageSource} />
       </div>
 
