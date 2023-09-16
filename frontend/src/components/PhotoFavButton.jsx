@@ -6,7 +6,6 @@ import '../styles/PhotoFavButton.scss';
 function PhotoFavButton(props) {
 
   const { favourite, changeFavourite } = props;
-  const displayAlertValue = true;
   const selectedValue = favourite;
 
   const handleClick = () => changeFavourite();
@@ -14,7 +13,7 @@ function PhotoFavButton(props) {
   return (
     <div onClick={handleClick} className="photo-list__fav-icon">
       <div className="photo-list__fav-icon-svg">
-        <FavIcon displayAlert={displayAlertValue} selected={selectedValue}/>
+        <FavIcon selected={selectedValue}/>
       </div>
     </div>
   );
