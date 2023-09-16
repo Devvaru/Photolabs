@@ -1,7 +1,7 @@
 import React from "react";
 
 import "../styles/PhotoList.scss";
-import PhotoListItem from 'components/PhotoListItem';
+import PhotoListItem from './PhotoListItem';
 
 const sampleDataForPhotoList = [
   {
