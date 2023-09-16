@@ -1,29 +1,19 @@
 import React, { useCallback, useState } from 'react';
 
-import PhotoListItem from './components/PhotoListItem';
-
+// import PhotoListItem from './components/PhotoListItem';
+import PhotoList from './components/PhotoList';
 import './App.scss';
-
-const sampleDataForPhotoListItem = {
-  id: "1",
-  location: {
-    city: "Montreal",
-    country: "Canada",
-  },
-  imageSource: `${process.env.PUBLIC_URL}/Image-1-Regular.jpeg`,
-  username: "Joe Example",
-  profile: `${process.env.PUBLIC_URL}/profile-1.jpg`,
-};
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
 
 
-  const photos = new Array(3).fill(null);
+  // const photos = new Array(3).fill(null);
 
   return (
     <div className="App">
-      {photos.map((_, index) => (
+
+      {/* {photos.map((_, index) => (
         <PhotoListItem
           key={index}
           id={sampleDataForPhotoListItem.id}
@@ -32,8 +22,8 @@ const App = () => {
           username={sampleDataForPhotoListItem.username}
           profile={sampleDataForPhotoListItem.profile}
         />
-      ))}
-
+      ))} */}
+    <PhotoList />
     </div>
   );
 };
