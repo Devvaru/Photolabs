@@ -9,7 +9,7 @@ import './App.scss';
 const App = () => {
 
   const [displayModal, setDisplayModal] = useState(false);
-  const [photoData, setPhotoData] = useState();
+  const [photoData, setPhotoData] = useState({});
 
   const closeModal = () => {
     setDisplayModal(false);

@@ -9,6 +9,7 @@ import '../styles/HomeRoute.scss';
 const HomeRoute = (props) => {
 
   const { setPhotoData, setDisplayModal } = props;
+  
   const [favouritedPhotoID, setFavouritedPhotoID] = useState([]);
 
   const changeFavourite = (photoID) => {

@@ -9,7 +9,12 @@ const PhotoListItem = (props) => {
   const { id, location, urls, user } = photo;
 
   const openModal = () => {
-    setPhotoData(photo);
+    const {location, urls, user} = photo;
+    const { regular } = urls;
+    const { username, name, profile } = user;
+    const { city, country } = location;
+
+    setPhotoData({city, country, regular, username, name, profile });
     setDisplayModal(true);
   };
 
