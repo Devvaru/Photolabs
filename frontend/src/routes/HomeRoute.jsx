@@ -9,23 +9,19 @@ const HomeRoute = () => {
 
   const [favouritedPhotoID, setFavouritedPhotoID] = useState([]);
   const changeFavourite = (photoID) => {
-
-    if (favouritedPhotoID.includes(photoID)) { // Remove photo ID if already in favourites
-
+    if (favouritedPhotoID.includes(photoID)) {
+      // Remove photo ID if already in favourites
       const copyOfFavourites = [...favouritedPhotoID].filter((favPhotoID) => photoID !== favPhotoID)
-
       setFavouritedPhotoID(copyOfFavourites);
-
-    } else { // Add photo ID if not in favourites
-
+    } else {
+      // Add photo ID if not in favourites
       setFavouritedPhotoID(prev => [...prev, photoID]);
-
     }
   };
 
   return (
     <div className="home-route">
-      <TopNavigationBar />
+      <TopNavigationBar favouritedPhotoID={favouritedPhotoID} />
       <PhotoList favouritedPhotoID={favouritedPhotoID} changeFavourite={changeFavourite} />
     </div>
   );
