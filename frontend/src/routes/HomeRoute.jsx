@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 import PhotoList from '../components/PhotoList';
 import TopNavigationBar from '../components/TopNavigationBar';
@@ -21,10 +21,6 @@ const HomeRoute = (props) => {
       setFavouritedPhotoID(prev => [...prev, photoID]);
     }
   };
-
-  useEffect(() => {
-    console.log("displayModal:", displayModal); // Add this line
-  }, [displayModal]);
 
   return (
     <div className="home-route">

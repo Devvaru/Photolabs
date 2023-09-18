@@ -8,13 +8,8 @@ const PhotoListItem = (props) => {
   const { photo, isFavourited, changeFavourite, openModal } = props;
   const { id, location, urls, user } = photo;
 
-  const handleClick = () => {
-    console.log("Opening modal...");
-    openModal();
-  }
-
   return (
-    <div onClick={handleClick} className="photo-list__item">
+    <div className="photo-list__item">
 
       {/* Favourite button and Image */}
       <div>
@@ -22,7 +17,7 @@ const PhotoListItem = (props) => {
         photoID={id} 
         isFavourited={isFavourited}
         changeFavourite={changeFavourite} />
-        <img className="photo-list__image" src={urls.regular} />
+        <img onClick={openModal} className="photo-list__image" src={urls.regular} />
       </div>
 
       {/* Photo list item details*/}
