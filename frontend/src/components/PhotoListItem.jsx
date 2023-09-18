@@ -5,11 +5,16 @@ import "../styles/PhotoListItem.scss";
 
 const PhotoListItem = (props) => {
 
-  const { photo, isFavourited, changeFavourite } = props;
+  const { photo, isFavourited, changeFavourite, openModal } = props;
   const { id, location, urls, user } = photo;
 
+  const handleClick = () => {
+    console.log("Opening modal...");
+    openModal();
+  }
+
   return (
-    <div className="photo-list__item">
+    <div onClick={handleClick} className="photo-list__item">
 
       {/* Favourite button and Image */}
       <div>

@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import PhotoList from '../components/PhotoList';
 import TopNavigationBar from '../components/TopNavigationBar';
+import PhotoDetailsModal from './PhotoDetailsModal';
 
 import '../styles/HomeRoute.scss';
 
-const HomeRoute = () => {
+const HomeRoute = (props) => {
 
+  const { displayModal, openModal, closeModal } = props;
   const [favouritedPhotoID, setFavouritedPhotoID] = useState([]);
+
   const changeFavourite = (photoID) => {
     if (favouritedPhotoID.includes(photoID)) {
       // Remove photo ID if already in favourites
@@ -19,10 +22,19 @@ const HomeRoute = () => {
     }
   };
 
+  useEffect(() => {
+    console.log("displayModal:", displayModal); // Add this line
+  }, [displayModal]);
+
   return (
     <div className="home-route">
       <TopNavigationBar favouritedPhotoID={favouritedPhotoID} />
-      <PhotoList favouritedPhotoID={favouritedPhotoID} changeFavourite={changeFavourite} />
+      <PhotoList
+        favouritedPhotoID={favouritedPhotoID}
+        changeFavourite={changeFavourite}
+        openModal={openModal}
+      />
+      {displayModal && <PhotoDetailsModal closeModal={closeModal} />}
     </div>
   );
 };
