@@ -5,17 +5,18 @@ import "../styles/PhotoListItem.scss";
 
 const PhotoListItem = (props) => {
 
-  const { id, location, urls, user } = props;
-
-  const [favourite, setFavourite] = useState(false);
-  const changeFavourite = () => setFavourite((favourite === true) ? false : true);
+  const { photo, isFavourited, changeFavourite } = props;
+  const { id, location, urls, user } = photo;
 
   return (
     <div className="photo-list__item">
 
       {/* Favourite button and Image */}
       <div>
-        <PhotoFavButton favourite={favourite} changeFavourite={changeFavourite} />
+        <PhotoFavButton 
+        photoID={id} 
+        isFavourited={isFavourited}
+        changeFavourite={changeFavourite} />
         <img className="photo-list__image" src={urls.regular} />
       </div>
 
