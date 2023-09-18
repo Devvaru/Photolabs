@@ -5,8 +5,13 @@ import "../styles/PhotoListItem.scss";
 
 const PhotoListItem = (props) => {
 
-  const { photo, isFavourited, changeFavourite, openModal } = props;
+  const { photo, isFavourited, changeFavourite, setPhotoData, setDisplayModal } = props;
   const { id, location, urls, user } = photo;
+
+  const openModal = () => {
+    setPhotoData(photo);
+    setDisplayModal(true);
+  };
 
   return (
     <div className="photo-list__item">

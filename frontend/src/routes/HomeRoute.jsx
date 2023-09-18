@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 
 import PhotoList from '../components/PhotoList';
 import TopNavigationBar from '../components/TopNavigationBar';
-import PhotoDetailsModal from './PhotoDetailsModal';
+
 
 import '../styles/HomeRoute.scss';
 
 const HomeRoute = (props) => {
 
-  const { displayModal, openModal, closeModal } = props;
+  const { setPhotoData, setDisplayModal } = props;
   const [favouritedPhotoID, setFavouritedPhotoID] = useState([]);
 
   const changeFavourite = (photoID) => {
@@ -28,9 +28,10 @@ const HomeRoute = (props) => {
       <PhotoList
         favouritedPhotoID={favouritedPhotoID}
         changeFavourite={changeFavourite}
-        openModal={openModal}
+        setPhotoData={setPhotoData}
+        setDisplayModal={setDisplayModal}
       />
-      {displayModal && <PhotoDetailsModal closeModal={closeModal} />}
+
     </div>
   );
 };

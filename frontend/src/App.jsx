@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from 'react';
 
 import HomeRoute from 'routes/HomeRoute';
+import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 
 import './App.scss';
 
@@ -8,10 +9,7 @@ import './App.scss';
 const App = () => {
 
   const [displayModal, setDisplayModal] = useState(false);
-
-  const openModal = () => {
-    setDisplayModal(true);
-  };
+  const [photoData, setPhotoData] = useState();
 
   const closeModal = () => {
     setDisplayModal(false);
@@ -21,8 +19,12 @@ const App = () => {
     <div className="App">
       <HomeRoute
         displayModal={displayModal}
-        openModal={openModal}
-        closeModal={closeModal} />
+        closeModal={closeModal}
+        photoData={photoData}
+        setPhotoData={setPhotoData}
+        setDisplayModal={setDisplayModal}
+      />
+      {displayModal && <PhotoDetailsModal closeModal={closeModal} photoData={photoData} />}
     </div>
   );
 };
