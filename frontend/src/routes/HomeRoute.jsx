@@ -2,26 +2,15 @@ import React, { useState } from 'react';
 
 import PhotoList from '../components/PhotoList';
 import TopNavigationBar from '../components/TopNavigationBar';
-
+import photos from '../mocks/photos';
 
 import '../styles/HomeRoute.scss';
 
 const HomeRoute = (props) => {
 
-  const { setPhotoData, setDisplayModal } = props;
+  const { setPhotoData, setDisplayModal, favouritedPhotoID, changeFavourite } = props;
   
-  const [favouritedPhotoID, setFavouritedPhotoID] = useState([]);
 
-  const changeFavourite = (photoID) => {
-    if (favouritedPhotoID.includes(photoID)) {
-      // Remove photo ID if already in favourites
-      const copyOfFavourites = [...favouritedPhotoID].filter((favPhotoID) => photoID !== favPhotoID)
-      setFavouritedPhotoID(copyOfFavourites);
-    } else {
-      // Add photo ID if not in favourites
-      setFavouritedPhotoID(prev => [...prev, photoID]);
-    }
-  };
 
   return (
     <div className="home-route">
@@ -31,6 +20,7 @@ const HomeRoute = (props) => {
         changeFavourite={changeFavourite}
         setPhotoData={setPhotoData}
         setDisplayModal={setDisplayModal}
+        photos={photos}
       />
 
     </div>

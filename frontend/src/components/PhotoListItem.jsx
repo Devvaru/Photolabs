@@ -6,15 +6,15 @@ import "../styles/PhotoListItem.scss";
 const PhotoListItem = (props) => {
 
   const { photo, isFavourited, changeFavourite, setPhotoData, setDisplayModal } = props;
-  const { id, location, urls, user } = photo;
+  const { id, location, urls, user, similar_photos } = photo;
 
   const openModal = () => {
     const {location, urls, user} = photo;
-    const { regular } = urls;
+    const { full } = urls;
     const { username, name, profile } = user;
     const { city, country } = location;
 
-    setPhotoData({city, country, regular, username, name, profile });
+    setPhotoData({city, country, full, username, name, profile, similar_photos });
     setDisplayModal(true);
   };
 

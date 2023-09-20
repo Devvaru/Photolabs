@@ -15,6 +15,19 @@ const App = () => {
     setDisplayModal(false);
   };
 
+  const [favouritedPhotoID, setFavouritedPhotoID] = useState([]);
+
+  const changeFavourite = (photoID) => {
+    if (favouritedPhotoID.includes(photoID)) {
+      // Remove photo ID if already in favourites
+      const copyOfFavourites = [...favouritedPhotoID].filter((favPhotoID) => photoID !== favPhotoID)
+      setFavouritedPhotoID(copyOfFavourites);
+    } else {
+      // Add photo ID if not in favourites
+      setFavouritedPhotoID(prev => [...prev, photoID]);
+    }
+  };
+
   return (
     <div className="App">
       <HomeRoute
@@ -23,8 +36,14 @@ const App = () => {
         photoData={photoData}
         setPhotoData={setPhotoData}
         setDisplayModal={setDisplayModal}
+        favouritedPhotoID={favouritedPhotoID}
+        changeFavourite={changeFavourite}
       />
-      {displayModal && <PhotoDetailsModal closeModal={closeModal} photoData={photoData} />}
+      {displayModal && <PhotoDetailsModal 
+      closeModal={closeModal} 
+      photoData={photoData} 
+      favouritedPhotoID={favouritedPhotoID}
+      changeFavourite={changeFavourite} />}
     </div>
   );
 };

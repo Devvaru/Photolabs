@@ -2,11 +2,10 @@ import React from "react";
 
 import "../styles/PhotoList.scss";
 import PhotoListItem from './PhotoListItem';
-import photos from '../mocks/photos';
 
 const PhotoList = (props) => {
 
-  const { favouritedPhotoID, changeFavourite, openModal, photoData, setPhotoData, PhotoDetailsModal, setDisplayModal } = props;
+  const { favouritedPhotoID, changeFavourite, openModal, photoData, setPhotoData, PhotoDetailsModal, setDisplayModal, photos } = props;
 
   return (
     <ul className="photo-list">
