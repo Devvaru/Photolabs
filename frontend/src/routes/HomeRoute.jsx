@@ -10,8 +10,6 @@ const HomeRoute = (props) => {
 
   const { setPhotoData, setDisplayModal, favouritedPhotoID, changeFavourite } = props;
   
-
-
   return (
     <div className="home-route">
       <TopNavigationBar favouritedPhotoID={favouritedPhotoID} />

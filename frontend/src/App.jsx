@@ -19,12 +19,16 @@ const App = () => {
 
   const changeFavourite = (photoID) => {
     if (favouritedPhotoID.includes(photoID)) {
+
       // Remove photo ID if already in favourites
       const copyOfFavourites = [...favouritedPhotoID].filter((favPhotoID) => photoID !== favPhotoID)
       setFavouritedPhotoID(copyOfFavourites);
+
     } else {
+
       // Add photo ID if not in favourites
       setFavouritedPhotoID(prev => [...prev, photoID]);
+
     }
   };
 
@@ -39,11 +43,11 @@ const App = () => {
         favouritedPhotoID={favouritedPhotoID}
         changeFavourite={changeFavourite}
       />
-      {displayModal && <PhotoDetailsModal 
-      closeModal={closeModal} 
-      photoData={photoData} 
-      favouritedPhotoID={favouritedPhotoID}
-      changeFavourite={changeFavourite} />}
+      {displayModal && <PhotoDetailsModal
+        closeModal={closeModal}
+        photoData={photoData}
+        favouritedPhotoID={favouritedPhotoID}
+        changeFavourite={changeFavourite} />}
     </div>
   );
 };

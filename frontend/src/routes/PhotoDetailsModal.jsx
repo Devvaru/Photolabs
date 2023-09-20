@@ -7,10 +7,8 @@ import PhotoList from '../components/PhotoList';
 const PhotoDetailsModal = (props) => {
 
   const { closeModal, photoData, favouritedPhotoID, changeFavourite } = props;
-  console.log(photoData);
 
   const similarPhotos = Object.values(photoData.similar_photos);
-  console.log(similarPhotos)
 
   return (
     <div className="photo-details-modal">
