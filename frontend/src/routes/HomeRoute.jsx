@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import PhotoList from '../components/PhotoList';
 import TopNavigationBar from '../components/TopNavigationBar';
@@ -8,19 +8,22 @@ import '../styles/HomeRoute.scss';
 
 const HomeRoute = (props) => {
 
-  const { setPhotoData, setDisplayModal, favouritedPhotoID, changeFavourite } = props;
-  
+  const { photoData, setPhotoData, displayModal, favouritePhotoIds, updateFavouritePhotoIds, onClosePhotoDetailsModal } = props;
+
   return (
     <div className="home-route">
-      <TopNavigationBar favouritedPhotoID={favouritedPhotoID} />
+      <TopNavigationBar favouritePhotoIds={favouritePhotoIds} />
       <PhotoList
-        favouritedPhotoID={favouritedPhotoID}
-        changeFavourite={changeFavourite}
-        setPhotoData={setPhotoData}
-        setDisplayModal={setDisplayModal}
-        photos={photos}
-      />
+        favouritePhotoIds={favouritePhotoIds}
+        updateFavouritePhotoIds={updateFavouritePhotoIds}
 
+        photoData={photoData}
+        setPhotoData={setPhotoData}
+        photos={photos}
+
+        displayModal={displayModal}
+        onClosePhotoDetailsModal={onClosePhotoDetailsModal}
+      />
     </div>
   );
 };

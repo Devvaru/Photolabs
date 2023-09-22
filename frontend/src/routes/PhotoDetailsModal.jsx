@@ -6,14 +6,14 @@ import PhotoList from '../components/PhotoList';
 
 const PhotoDetailsModal = (props) => {
 
-  const { closeModal, photoData, favouritedPhotoID, changeFavourite } = props;
+  const { onClosePhotoDetailsModal, photoData, favouritePhotoIds, updateFavouritePhotoIds } = props;
 
   const similarPhotos = Object.values(photoData.similar_photos);
 
   return (
     <div className="photo-details-modal">
 
-      <button onClick={closeModal} className="photo-details-modal__close-button">
+      <button onClick={onClosePhotoDetailsModal} className="photo-details-modal__close-button">
         <img src={closeSymbol} alt="close symbol" />
       </button>
 
@@ -31,8 +31,8 @@ const PhotoDetailsModal = (props) => {
       <div>
         <PhotoList
           photos={similarPhotos}
-          favouritedPhotoID={favouritedPhotoID}
-          changeFavourite={changeFavourite}
+          favouritePhotoIds={favouritePhotoIds}
+          updateFavouritePhotoIds={updateFavouritePhotoIds}
         />
       </div>
     </div>

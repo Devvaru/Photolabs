@@ -7,12 +7,12 @@ import '../styles/TopNavigationBar.scss'
 
 const TopNavigation = (props) => {
 
-  const { favouritedPhotoID } = props;
-  const [displayAlert, setDisplayAlert] = useState(favouritedPhotoID.length > 0);
+  const { favouritePhotoIds } = props;
+  const [displayAlert, setDisplayAlert] = useState(favouritePhotoIds.length > 0);
   useEffect(() => {
-    // Update displayAlert when favouritedPhotoID length changes
-    setDisplayAlert(favouritedPhotoID.length > 0);
-  }, [favouritedPhotoID]);
+    // Update displayAlert when favouritePhotoIds length changes
+    setDisplayAlert(favouritePhotoIds.length > 0);
+  }, [favouritePhotoIds]);
 
   return (
     <div className="top-nav-bar">
@@ -20,7 +20,7 @@ const TopNavigation = (props) => {
       <TopicList />
       <FavBadge displayAlert={displayAlert} />
     </div>
-  )
-}
+  );
+};
 
 export default TopNavigation;

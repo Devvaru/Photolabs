@@ -2,52 +2,42 @@ import React, { useCallback, useState } from 'react';
 
 import HomeRoute from 'routes/HomeRoute';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
+import useApplicationData from 'hooks/useApplicationData';
 
 import './App.scss';
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
 
-  const [displayModal, setDisplayModal] = useState(false);
-  const [photoData, setPhotoData] = useState({});
-
-  const closeModal = () => {
-    setDisplayModal(false);
-  };
-
-  const [favouritedPhotoID, setFavouritedPhotoID] = useState([]);
-
-  const changeFavourite = (photoID) => {
-    if (favouritedPhotoID.includes(photoID)) {
-
-      // Remove photo ID if already in favourites
-      const copyOfFavourites = [...favouritedPhotoID].filter((favPhotoID) => photoID !== favPhotoID)
-      setFavouritedPhotoID(copyOfFavourites);
-
-    } else {
-
-      // Add photo ID if not in favourites
-      setFavouritedPhotoID(prev => [...prev, photoID]);
-
-    }
-  };
+  const {
+    state,
+    updateFavouritePhotoIds,
+    setPhotoData,
+    // onLoadTopic,
+    onClosePhotoDetailsModal,
+  } = useApplicationData();
 
   return (
     <div className="App">
       <HomeRoute
-        displayModal={displayModal}
-        closeModal={closeModal}
-        photoData={photoData}
+        favouritePhotoIds={state.favouritePhotoIds}
+        updateFavouritePhotoIds={updateFavouritePhotoIds}
+
+        displayModal={state.displayModal}
+        onClosePhotoDetailsModal={onClosePhotoDetailsModal}
+
+        photoData={state.photoData}
         setPhotoData={setPhotoData}
-        setDisplayModal={setDisplayModal}
-        favouritedPhotoID={favouritedPhotoID}
-        changeFavourite={changeFavourite}
       />
-      {displayModal && <PhotoDetailsModal
-        closeModal={closeModal}
-        photoData={photoData}
-        favouritedPhotoID={favouritedPhotoID}
-        changeFavourite={changeFavourite} />}
+      {state.displayModal &&
+        <PhotoDetailsModal
+        favouritePhotoIds={state.favouritePhotoIds}
+          updateFavouritePhotoIds={updateFavouritePhotoIds}
+
+          onClosePhotoDetailsModal={onClosePhotoDetailsModal}
+
+          photoData={state.photoData}
+        />}
     </div>
   );
 };

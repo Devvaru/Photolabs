@@ -5,12 +5,12 @@ import '../styles/PhotoFavButton.scss';
 
 function PhotoFavButton(props) {
 
-  const { photoID, isFavorited, changeFavourite } = props;
+  const { photoID, isFavorited, updateFavouritePhotoIds } = props;
   const [favourite, setFavourite] = useState(isFavorited);
 
   const handleClick = () => {
     setFavourite(!favourite);
-    changeFavourite(photoID);
+    updateFavouritePhotoIds(photoID);
   }
 
   return (
