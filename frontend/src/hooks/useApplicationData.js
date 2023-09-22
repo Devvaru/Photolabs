@@ -25,10 +25,12 @@ const useApplicationData = () => {
     }
   };
 
+  // sets photo data for modal and sets displayModal boolean
   const setPhotoData = (data, isOpen = false) => {
     setState({ ...state, photoData: { ...data }, displayModal: isOpen })
   };
 
+  // closes modal
   const onClosePhotoDetailsModal = () => {
     setState({ ...state, displayModal: false })
   };
@@ -37,9 +39,9 @@ const useApplicationData = () => {
   //   setState({ ...state, displayModal: true });
   // };
 
-  const onLoadTopic = () => {
+  // const onLoadTopic = () => {
 
-  }
+  // }
 
   return { state, updateFavouritePhotoIds, setPhotoData, onClosePhotoDetailsModal };
 }
