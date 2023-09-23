@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useEffect } from 'react';
 
 export const ACTIONS = {
   FAV_PHOTO_ADDED: 'FAV_PHOTO_ADDED',
@@ -7,7 +7,7 @@ export const ACTIONS = {
   CLOSE_PHOTO_MODAL: 'CLOSE_PHOTO_MODAL',
 
   SET_PHOTO_DATA: 'SET_PHOTO_DATA',
-  
+
   // SET_TOPIC_DATA: 'SET_TOPIC_DATA',
 
   // SELECT_PHOTO: 'SELECT_PHOTO',
@@ -64,8 +64,19 @@ const useApplicationData = () => {
   const initialState = {
     favouritePhotoIds: [],
     displayModal: false,
-    photoData: {},
+    // photoData: {}, // original mock data
+    photoData: [],
+    topicData: []
   };
+
+  // get request for photos, runs once
+  useEffect(() => {
+    fetch('/api/photos')
+      .then(res => console.log(res.json()))
+      // .then(data => {
+      //   setState([...data])
+      // })
+  }, []);
 
   const [state, dispatch] = useReducer(reducer, initialState);
 
