@@ -15,8 +15,8 @@ export const ACTIONS = {
 const initialState = {
   favouritePhotoIds: [],
   displayModal: false,
-  displayModalDetails: {}, // original mock data for modal
-  photoData: [], // general photos
+  displayModalDetails: {},
+  photoData: [],
   topicData: []
 };
 

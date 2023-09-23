@@ -13,11 +13,8 @@ const App = () => {
     state,
     updateFavouritePhotoIds,
     displayModalPhotoDetails,
-    // onLoadTopic,
     onClosePhotoDetailsModal,
   } = useApplicationData();
-
-  // console.log(state.topicData)
 
   return (
     <div className="App">

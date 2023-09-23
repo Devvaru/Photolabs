@@ -14,7 +14,7 @@ const PhotoListItem = (props) => {
     const { username, name, profile } = user;
     const { city, country } = location;
 
-    displayModalPhotoDetails({city, country, full, username, name, profile, similar_photos }, true);
+    displayModalPhotoDetails({ city, country, full, username, name, profile, similar_photos }, true);
   };
 
   return (
@@ -22,10 +22,10 @@ const PhotoListItem = (props) => {
 
       {/* Favourite button and Image  */}
       <div>
-        <PhotoFavButton 
-        photoID={id} 
-        isFavourited={isFavourited}
-        updateFavouritePhotoIds={updateFavouritePhotoIds} />
+        <PhotoFavButton
+          photoID={id}
+          isFavourited={isFavourited}
+          updateFavouritePhotoIds={updateFavouritePhotoIds} />
         <img onClick={modalDisplay} className="photo-list__image" src={urls.regular} />
       </div>
 
