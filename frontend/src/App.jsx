@@ -12,10 +12,12 @@ const App = () => {
   const {
     state,
     updateFavouritePhotoIds,
-    setPhotoData,
+    displayModalPhotoDetails,
     // onLoadTopic,
     onClosePhotoDetailsModal,
   } = useApplicationData();
+
+  // console.log(state.topicData)
 
   return (
     <div className="App">
@@ -23,12 +25,12 @@ const App = () => {
         favouritePhotoIds={state.favouritePhotoIds}
         updateFavouritePhotoIds={updateFavouritePhotoIds}
 
+        photoData={state.photoData}
+        topicData={state.topicData}
+
         displayModal={state.displayModal}
         onClosePhotoDetailsModal={onClosePhotoDetailsModal}
-
-        photos={state.photos}
-        
-        setPhotoData={setPhotoData}
+        displayModalPhotoDetails={displayModalPhotoDetails}
       />
       {state.displayModal &&
         <PhotoDetailsModal
@@ -37,7 +39,7 @@ const App = () => {
 
           onClosePhotoDetailsModal={onClosePhotoDetailsModal}
 
-          photoData={state.photoData}
+          displayModalDetails={state.displayModalDetails}
         />}
     </div>
   );

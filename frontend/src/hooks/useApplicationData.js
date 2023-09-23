@@ -6,16 +6,19 @@ export const ACTIONS = {
 
   CLOSE_PHOTO_MODAL: 'CLOSE_PHOTO_MODAL',
 
-  SET_PHOTO_DATA: 'SET_PHOTO_DATA', // for modal
+  SET_PHOTO_DATA: 'SET_PHOTO_DATA',
 
-  SET_PHOTOS: 'SET_PHOTOS', // for general 
+  SET_TOPIC_DATA: 'SET_TOPIC_DATA',
 
-  // SET_TOPIC_DATA: 'SET_TOPIC_DATA',
-
-  // SELECT_PHOTO: 'SELECT_PHOTO',
-
-  // DISPLAY_PHOTO_DETAILS: 'DISPLAY_PHOTO_DETAILS'
+  DISPLAY_MODAL_DETAILS: 'DISPLAY_MODAL_DETAILS'
 }
+const initialState = {
+  favouritePhotoIds: [],
+  displayModal: false,
+  displayModalDetails: {}, // original mock data for modal
+  photoData: [], // general photos
+  topicData: []
+};
 
 const useApplicationData = () => {
 
@@ -51,12 +54,15 @@ const useApplicationData = () => {
       //     ),
       //   };
 
-      case ACTIONS.SET_PHOTO_DATA:
+      case ACTIONS.DISPLAY_MODAL_DETAILS:
         const { data, isOpen } = action.payload;
-        return { ...state, photoData: { ...data }, displayModal: isOpen };
+        return { ...state, displayModalDetails: { ...data }, displayModal: isOpen };
 
-      case ACTIONS.SET_PHOTOS:
-        return { ...state, photos: action.payload };
+      case ACTIONS.SET_PHOTO_DATA:
+        return { ...state, photoData: action.payload };
+
+      case ACTIONS.SET_TOPIC_DATA:
+        return { ...state, topicData: action.payload };
 
       case ACTIONS.CLOSE_PHOTO_MODAL:
         return { ...state, displayModal: false };
@@ -66,22 +72,24 @@ const useApplicationData = () => {
     }
   }
 
-  const initialState = {
-    favouritePhotoIds: [],
-    displayModal: false,
-    photoData: {}, // original mock data for modal
-    photos: [],
-    topicData: []
-  };
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   // get request for photos, runs once
   useEffect(() => {
     fetch('/api/photos')
       .then(response => response.json())
-      .then(data => dispatch({ type: ACTIONS.SET_PHOTOS, payload: data }))
+      .then(data => dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data }))
   }, []);
 
-  const [state, dispatch] = useReducer(reducer, initialState);
+  // get request for topics, runs once
+  useEffect(() => {
+    fetch('/api/topics')
+      .then(response => response.json())
+      .then(data => {
+        console.log("topics data:", data);
+        return dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: data })
+      })
+  }, []);
 
   // set favourite photos array
   const updateFavouritePhotoIds = (photoID) => {
@@ -95,8 +103,8 @@ const useApplicationData = () => {
   };
 
   // sets photo data for modal and sets displayModal boolean
-  const setPhotoData = (data, isOpen = false) => {
-    dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: { data, isOpen } });
+  const displayModalPhotoDetails = (data, isOpen = false) => {
+    dispatch({ type: ACTIONS.DISPLAY_MODAL_DETAILS, payload: { data, isOpen } });
   };
 
   // closes modal
@@ -104,15 +112,7 @@ const useApplicationData = () => {
     dispatch({ type: ACTIONS.CLOSE_PHOTO_MODAL })
   };
 
-  // const onOpenPhotoDetailsModal = () => {
-  //   setState({ ...state, displayModal: true });
-  // };
-
-  // const onLoadTopic = () => {
-
-  // }
-
-  return { state, updateFavouritePhotoIds, setPhotoData, onClosePhotoDetailsModal };
+  return { state, updateFavouritePhotoIds, displayModalPhotoDetails, onClosePhotoDetailsModal };
 }
 
 export default useApplicationData;

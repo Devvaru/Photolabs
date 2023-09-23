@@ -6,9 +6,9 @@ import PhotoList from '../components/PhotoList';
 
 const PhotoDetailsModal = (props) => {
 
-  const { onClosePhotoDetailsModal, photoData, favouritePhotoIds, updateFavouritePhotoIds } = props;
+  const { onClosePhotoDetailsModal, displayModal, displayModalDetails, displayModalPhotoDetails, favouritePhotoIds, updateFavouritePhotoIds } = props;
 
-  const similarPhotos = Object.values(photoData.similar_photos);
+  const similarPhotos = Object.values(displayModalDetails.similar_photos);
 
   return (
     <div className="photo-details-modal">
@@ -18,21 +18,26 @@ const PhotoDetailsModal = (props) => {
       </button>
 
       <div>
-        <img src={photoData.full} className="photo-details-modal__image" />
+        <img src={displayModalDetails.full} className="photo-details-modal__image" />
       </div>
       <div className="photo-details-modal__photographer-details photo-details-modal__header">
-        <img src={photoData.profile} className="photo-list__user-profile" />
+        <img src={displayModalDetails.profile} className="photo-list__user-profile" />
         <div className="photo-list__user-info">
-          <p className="photo-list__user-info"> {photoData.username}</p>
-          <p className="photo-list__user-info  photo-list__user-location">{photoData.city} {photoData.country} </p>
+          <p className="photo-list__user-info"> {displayModalDetails.username}</p>
+          <p className="photo-list__user-info  photo-list__user-location">{displayModalDetails.city} {displayModalDetails.country} </p>
         </div>
       </div>
 
       <div>
         <PhotoList
-          photos={similarPhotos}
+          photoData={similarPhotos}
           favouritePhotoIds={favouritePhotoIds}
           updateFavouritePhotoIds={updateFavouritePhotoIds}
+
+          displayModalDetails={displayModalDetails}
+          displayModalPhotoDetails={displayModalPhotoDetails}
+          displayModal={displayModal}
+          onClosePhotoDetailsModal={onClosePhotoDetailsModal}
         />
       </div>
     </div>

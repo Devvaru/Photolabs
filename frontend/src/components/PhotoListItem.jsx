@@ -5,7 +5,7 @@ import "../styles/PhotoListItem.scss";
 
 const PhotoListItem = (props) => {
 
-  const { photo, isFavourited, updateFavouritePhotoIds, setPhotoData } = props;
+  const { photo, isFavourited, updateFavouritePhotoIds, displayModalPhotoDetails } = props;
   const { id, location, urls, user, similar_photos } = photo;
 
   const modalDisplay = () => {
@@ -14,7 +14,7 @@ const PhotoListItem = (props) => {
     const { username, name, profile } = user;
     const { city, country } = location;
 
-    setPhotoData({city, country, full, username, name, profile, similar_photos }, true);
+    displayModalPhotoDetails({city, country, full, username, name, profile, similar_photos }, true);
   };
 
   return (
