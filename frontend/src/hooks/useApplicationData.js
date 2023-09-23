@@ -6,7 +6,9 @@ export const ACTIONS = {
 
   CLOSE_PHOTO_MODAL: 'CLOSE_PHOTO_MODAL',
 
-  SET_PHOTO_DATA: 'SET_PHOTO_DATA',
+  SET_PHOTO_DATA: 'SET_PHOTO_DATA', // for modal
+
+  SET_PHOTOS: 'SET_PHOTOS', // for general 
 
   // SET_TOPIC_DATA: 'SET_TOPIC_DATA',
 
@@ -53,6 +55,9 @@ const useApplicationData = () => {
         const { data, isOpen } = action.payload;
         return { ...state, photoData: { ...data }, displayModal: isOpen };
 
+      case ACTIONS.SET_PHOTOS:
+        return { ...state, photos: action.payload };
+
       case ACTIONS.CLOSE_PHOTO_MODAL:
         return { ...state, displayModal: false };
 
@@ -64,18 +69,16 @@ const useApplicationData = () => {
   const initialState = {
     favouritePhotoIds: [],
     displayModal: false,
-    // photoData: {}, // original mock data
-    photoData: [],
+    photoData: {}, // original mock data for modal
+    photos: [],
     topicData: []
   };
 
   // get request for photos, runs once
   useEffect(() => {
     fetch('/api/photos')
-      .then(res => console.log(res.json()))
-      // .then(data => {
-      //   setState([...data])
-      // })
+      .then(response => response.json())
+      .then(data => dispatch({ type: ACTIONS.SET_PHOTOS, payload: data }))
   }, []);
 
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -90,8 +93,6 @@ const useApplicationData = () => {
       dispatch({ type: ACTIONS.FAV_PHOTO_ADDED, payload: photoID });
     }
   };
-
-  console.log(state.favouritePhotoIds)
 
   // sets photo data for modal and sets displayModal boolean
   const setPhotoData = (data, isOpen = false) => {

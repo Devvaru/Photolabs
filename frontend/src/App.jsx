@@ -26,12 +26,13 @@ const App = () => {
         displayModal={state.displayModal}
         onClosePhotoDetailsModal={onClosePhotoDetailsModal}
 
-        photoData={state.photoData}
+        photos={state.photos}
+        
         setPhotoData={setPhotoData}
       />
       {state.displayModal &&
         <PhotoDetailsModal
-        favouritePhotoIds={state.favouritePhotoIds}
+          favouritePhotoIds={state.favouritePhotoIds}
           updateFavouritePhotoIds={updateFavouritePhotoIds}
 
           onClosePhotoDetailsModal={onClosePhotoDetailsModal}

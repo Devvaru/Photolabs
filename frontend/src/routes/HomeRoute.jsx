@@ -2,13 +2,14 @@ import React from 'react';
 
 import PhotoList from '../components/PhotoList';
 import TopNavigationBar from '../components/TopNavigationBar';
-import photos from '../mocks/photos';
 
 import '../styles/HomeRoute.scss';
 
 const HomeRoute = (props) => {
 
-  const { photoData, setPhotoData, displayModal, favouritePhotoIds, updateFavouritePhotoIds, onClosePhotoDetailsModal } = props;
+  const { photoData, setPhotoData, photos, displayModal, favouritePhotoIds, updateFavouritePhotoIds, onClosePhotoDetailsModal } = props;
+
+  console.log(photos)
 
   return (
     <div className="home-route">
