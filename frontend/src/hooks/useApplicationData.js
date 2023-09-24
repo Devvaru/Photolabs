@@ -100,6 +100,9 @@ const useApplicationData = () => {
     axios.get(`/api/topics/photos/${id}`)
       .then(response => response.data)
       .then(data => dispatch({ type: ACTIONS.GET_PHOTOS_BY_TOPIC, payload: data }))
+      .catch((error) => {
+        console.error("Error fetching photos by topic: ", error);
+      });
   }
 
   return { state, updateFavouritePhotoIds, displayModalPhotoDetails, onClosePhotoDetailsModal, onTopicSelect };
