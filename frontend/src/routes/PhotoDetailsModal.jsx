@@ -7,7 +7,7 @@ import PhotoList from '../components/PhotoList';
 const PhotoDetailsModal = (props) => {
 
   const { onClosePhotoDetailsModal, displayModal, displayModalDetails, displayModalPhotoDetails, favouritePhotoIds, updateFavouritePhotoIds } = props;
-
+console.log(displayModalPhotoDetails)
   const similarPhotos = Object.values(displayModalDetails.similar_photos);
 
   return (
@@ -33,9 +33,7 @@ const PhotoDetailsModal = (props) => {
           photoData={similarPhotos}
           favouritePhotoIds={favouritePhotoIds}
           updateFavouritePhotoIds={updateFavouritePhotoIds}
-
           displayModalDetails={displayModalDetails}
-          displayModalPhotoDetails={displayModalPhotoDetails}
           displayModal={displayModal}
           onClosePhotoDetailsModal={onClosePhotoDetailsModal}
         />

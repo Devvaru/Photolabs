@@ -14,7 +14,7 @@ const PhotoListItem = (props) => {
     const { username, name, profile } = user;
     const { city, country } = location;
 
-    displayModalPhotoDetails({ city, country, full, username, name, profile, similar_photos }, true);
+    displayModalPhotoDetails && displayModalPhotoDetails({ city, country, full, username, name, profile, similar_photos }, true);
   };
 
   return (
