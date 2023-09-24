@@ -7,15 +7,16 @@ import '../styles/HomeRoute.scss';
 
 const HomeRoute = (props) => {
 
-  const { displayModalDetails, displayModalPhotoDetails, photoData, topicData, topicId, displayModal, favouritePhotoIds, updateFavouritePhotoIds, onClosePhotoDetailsModal } = props;
+  const { displayModalDetails, displayModalPhotoDetails, photoData, topicData, topicId, displayModal, favouritePhotoIds, updateFavouritePhotoIds, onClosePhotoDetailsModal, setTopicId } = props;
 
   return (
     <div className="home-route">
-      <TopNavigationBar favouritePhotoIds={favouritePhotoIds} topicData={topicData} />
+      <TopNavigationBar favouritePhotoIds={favouritePhotoIds} topicData={topicData} setTopicId={setTopicId} />
       <PhotoList
         favouritePhotoIds={favouritePhotoIds}
         updateFavouritePhotoIds={updateFavouritePhotoIds}
         photoData={photoData}
+        setTopicId={setTopicId}
         topicId={topicId}
         displayModalDetails={displayModalDetails}
         displayModalPhotoDetails={displayModalPhotoDetails}

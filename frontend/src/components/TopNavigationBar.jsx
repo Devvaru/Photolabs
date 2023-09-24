@@ -7,7 +7,7 @@ import '../styles/TopNavigationBar.scss'
 
 const TopNavigation = (props) => {
 
-  const { favouritePhotoIds, topicData, topicId } = props;
+  const { favouritePhotoIds, topicData, setTopicId, topicId } = props;
 
   // Update displayAlert when favouritePhotoIds length changes
   const [displayAlert, setDisplayAlert] = useState(favouritePhotoIds.length > 0);
@@ -18,7 +18,7 @@ const TopNavigation = (props) => {
   return (
     <div className="top-nav-bar">
       <span className="top-nav-bar__logo">PhotoLabs</span>
-      <TopicList topicData={topicData} topicId={topicId} />
+      <TopicList topicData={topicData} setTopicId={setTopicId} topicId={topicId} />
       <FavBadge displayAlert={displayAlert} />
     </div>
   );

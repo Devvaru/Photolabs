@@ -48,7 +48,7 @@ const useApplicationData = () => {
         return { ...state, topicData: action.payload };
 
       case ACTIONS.SET_TOPIC_ID:
-        return action.payload;
+        return { ...state, topicId: action.payload };
 
       case ACTIONS.GET_PHOTOS_BY_TOPIC:
         return { ...state, };
@@ -76,13 +76,12 @@ const useApplicationData = () => {
 
   // get request for photos based on topic
   // useEffect(() => {
-  //   if (topicId) {
-  //     fetch('/api/topics/photos/${topicId}')
+  //   if (state.topicId) {
+  //     axios.get('/api/topics/photos/${topicId}')
   //       .then(response => response.json())
-  //       .then(dispatch({ type: 'SET_TOPIC_ID', payload: topicId }))
   //       .then(data => dispatch({ type: ACTIONS.GET_PHOTOS_BY_TOPIC, payload: data }))
   //   }
-  // }, [topicId]);
+  // }, [state.topicId]);
 
   // set favourite photos array
   const updateFavouritePhotoIds = (photoID) => {
@@ -97,7 +96,6 @@ const useApplicationData = () => {
 
   // sets photo data for modal and sets displayModal boolean
   const displayModalPhotoDetails = (data, isOpen = false) => {
-    console.log('clicked')
     dispatch({ type: ACTIONS.DISPLAY_MODAL_DETAILS, payload: { data, isOpen } });
   };
 
@@ -106,11 +104,12 @@ const useApplicationData = () => {
     dispatch({ type: ACTIONS.CLOSE_PHOTO_MODAL })
   };
 
-  // const setTopicId = (topicId) => {
+  // sets the topic ID when a topic is clicked
+  const setTopicId = (topicId) => {
+    dispatch({ type: ACTIONS.SET_TOPIC_ID, payload: topicId });
+  }
 
-  // }
-
-  return { state, updateFavouritePhotoIds, displayModalPhotoDetails, onClosePhotoDetailsModal };
+  return { state, updateFavouritePhotoIds, displayModalPhotoDetails, onClosePhotoDetailsModal, setTopicId };
 }
 
 export default useApplicationData;
