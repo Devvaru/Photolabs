@@ -7,7 +7,6 @@ export const ACTIONS = {
   CLOSE_PHOTO_MODAL: 'CLOSE_PHOTO_MODAL',
   SET_PHOTO_DATA: 'SET_PHOTO_DATA',
   SET_TOPIC_DATA: 'SET_TOPIC_DATA',
-  SET_TOPIC_ID: 'SET_TOPIC_ID',
   GET_PHOTOS_BY_TOPIC: 'GET_PHOTOS_BY_TOPIC',
   DISPLAY_MODAL_DETAILS: 'DISPLAY_MODAL_DETAILS'
 }
@@ -16,8 +15,7 @@ const initialState = {
   displayModal: false,
   displayModalDetails: {},
   photoData: [],
-  topicData: [],
-  topicId: null
+  topicData: []
 };
 
 const useApplicationData = () => {
@@ -51,7 +49,7 @@ const useApplicationData = () => {
         return { ...state, topicId: action.payload };
 
       case ACTIONS.GET_PHOTOS_BY_TOPIC:
-        return { ...state, };
+        return { ...state, photoData: action.payload };
 
       case ACTIONS.CLOSE_PHOTO_MODAL:
         return { ...state, displayModal: false };
@@ -72,16 +70,10 @@ const useApplicationData = () => {
         dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: photos.data })
         dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: topics.data })
       })
-  }, [])
-
-  // get request for photos based on topic
-  // useEffect(() => {
-  //   if (state.topicId) {
-  //     axios.get('/api/topics/photos/${topicId}')
-  //       .then(response => response.json())
-  //       .then(data => dispatch({ type: ACTIONS.GET_PHOTOS_BY_TOPIC, payload: data }))
-  //   }
-  // }, [state.topicId]);
+      .catch((error) => {
+        console.error("Error fetching photos and topics: ", error);
+      });
+  }, []);
 
   // set favourite photos array
   const updateFavouritePhotoIds = (photoID) => {
@@ -104,12 +96,13 @@ const useApplicationData = () => {
     dispatch({ type: ACTIONS.CLOSE_PHOTO_MODAL })
   };
 
-  // sets the topic ID when a topic is clicked
-  const setTopicId = (topicId) => {
-    dispatch({ type: ACTIONS.SET_TOPIC_ID, payload: topicId });
+  const onTopicSelect = (id) => {
+    axios.get(`/api/topics/photos/${id}`)
+      .then(response => response.data)
+      .then(data => dispatch({ type: ACTIONS.GET_PHOTOS_BY_TOPIC, payload: data }))
   }
 
-  return { state, updateFavouritePhotoIds, displayModalPhotoDetails, onClosePhotoDetailsModal, setTopicId };
+  return { state, updateFavouritePhotoIds, displayModalPhotoDetails, onClosePhotoDetailsModal, onTopicSelect };
 }
 
 export default useApplicationData;

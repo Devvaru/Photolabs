@@ -14,7 +14,7 @@ const App = () => {
     updateFavouritePhotoIds,
     displayModalPhotoDetails,
     onClosePhotoDetailsModal,
-    setTopicId
+    onTopicSelect,
   } = useApplicationData();
 
   return (
@@ -24,8 +24,7 @@ const App = () => {
         updateFavouritePhotoIds={updateFavouritePhotoIds}
         photoData={state.photoData}
         topicData={state.topicData}
-        setTopicId={setTopicId}
-        topicId={state.topicId}
+        onTopicSelect={onTopicSelect}
         displayModal={state.displayModal}
         onClosePhotoDetailsModal={onClosePhotoDetailsModal}
         displayModalPhotoDetails={displayModalPhotoDetails}

@@ -4,16 +4,12 @@ import "../styles/TopicListItem.scss";
 
 const TopicListItem = (props) => {
 
-  const { id, slug, title, setTopicId } = props;
-
-  const handleTopicClick = () => {
-    setTopicId(id)
-  }
+  const { id, slug, title, onTopicSelect } = props;
 
   return (
     <div className="top-nav-bar__topic-list">
       <div className="topic-list__item">
-        <span onClick={handleTopicClick}>
+        <span onClick={() => onTopicSelect(id)}>
           {title}
         </span>
       </div>

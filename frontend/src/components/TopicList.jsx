@@ -5,7 +5,7 @@ import TopicListItem from "./TopicListItem";
 
 const TopicList = (props) => {
 
-  const { topicData, setTopicId } = props;
+  const { topicData, onTopicSelect } = props;
 
   return (
     <div className="top-nav-bar__topic-list">
@@ -15,7 +15,8 @@ const TopicList = (props) => {
           id={topic.id}
           slug={topic.slug}
           title={topic.title}
-          setTopicId={setTopicId}
+          // setTopicId={setTopicId}
+          onTopicSelect={onTopicSelect}
         />
       ))}
     </div>
