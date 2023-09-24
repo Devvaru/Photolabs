@@ -17,14 +17,14 @@ const PhotoDetailsModal = (props) => {
         <img src={closeSymbol} alt="close symbol" />
       </button>
 
-      <div>
+      <div className="photo-details-modal__images">
         <img src={displayModalDetails.full} className="photo-details-modal__image" />
-      </div>
-      <div className="photo-details-modal__photographer-details photo-details-modal__header">
-        <img src={displayModalDetails.profile} className="photo-list__user-profile" />
-        <div className="photo-list__user-info">
-          <p className="photo-list__user-info"> {displayModalDetails.username}</p>
-          <p className="photo-list__user-info  photo-list__user-location">{displayModalDetails.city} {displayModalDetails.country} </p>
+        <div className="photo-details-modal__photographer-details photo-details-modal__header">
+          <img src={displayModalDetails.profile} className="photo-list__user-profile" />
+          <div className="photo-list__user-info">
+            <p className="photo-list__user-info"> {displayModalDetails.username}</p>
+            <p className="photo-list__user-info  photo-list__user-location">{displayModalDetails.city} {displayModalDetails.country} </p>
+          </div>
         </div>
       </div>
 
