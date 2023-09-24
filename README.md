@@ -28,15 +28,7 @@ cd backend
 npm start
 ```
 
-## Dependencies
-- @testing-library/jest-dom
-- @testing-library/react
-- @testing-library/user-event
-- react
-- react-dom
-- react-scripts
-- web-vitals
-
 ## Screenshots
-![](url)
-![](url)
+![Home page of PhotoLabs](https://github.com/Devvaru/photolabs-starter/blob/main/frontend/docs/photolabs_home.png?raw=true)
+![Modal view of PhotoLabs](https://github.com/Devvaru/photolabs-starter/blob/main/frontend/docs/photolabs_modal.png?raw=true)
+![Topics view of PhotoLabs](https://github.com/Devvaru/photolabs-starter/blob/main/frontend/docs/photolabs_topic.png?raw=true)
