@@ -21,10 +21,9 @@ const App = () => {
       <HomeRoute
         favouritePhotoIds={state.favouritePhotoIds}
         updateFavouritePhotoIds={updateFavouritePhotoIds}
-
         photoData={state.photoData}
         topicData={state.topicData}
-
+        topicId={state.topicId}
         displayModal={state.displayModal}
         onClosePhotoDetailsModal={onClosePhotoDetailsModal}
         displayModalPhotoDetails={displayModalPhotoDetails}
@@ -33,9 +32,7 @@ const App = () => {
         <PhotoDetailsModal
           favouritePhotoIds={state.favouritePhotoIds}
           updateFavouritePhotoIds={updateFavouritePhotoIds}
-
           onClosePhotoDetailsModal={onClosePhotoDetailsModal}
-
           displayModalDetails={state.displayModalDetails}
         />}
     </div>
