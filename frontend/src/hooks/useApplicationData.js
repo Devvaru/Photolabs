@@ -55,7 +55,7 @@ const useApplicationData = () => {
       default:
         return state;
     }
-  }
+  };
 
   const [state, dispatch] = useReducer(reducer, initialState);
 

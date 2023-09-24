@@ -6,8 +6,9 @@ import '../styles/PhotoFavButton.scss';
 function PhotoFavButton(props) {
 
   const { photoID, isFavourited, updateFavouritePhotoIds } = props;
-  const [favourite, setFavourite] = useState(isFavourited);
 
+  // set state of photo being favourited
+  const [favourite, setFavourite] = useState(isFavourited);
   const handleClick = () => {
     setFavourite(!favourite);
     updateFavouritePhotoIds(photoID);

@@ -8,6 +8,7 @@ import '../styles/TopNavigationBar.scss'
 const TopNavigation = (props) => {
 
   const { favouritePhotoIds, topicData, onTopicSelect } = props;
+
   // Update displayAlert when favouritePhotoIds length changes
   const [displayAlert, setDisplayAlert] = useState(favouritePhotoIds.length > 0);
 
