@@ -4,7 +4,7 @@ import "../styles/TopicListItem.scss";
 
 const TopicListItem = (props) => {
 
-  const { id, slug, title, onTopicSelect } = props;
+  const { id, title, onTopicSelect } = props;
 
   return (
     <div className="top-nav-bar__topic-list">

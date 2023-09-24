@@ -15,7 +15,6 @@ const TopicList = (props) => {
           id={topic.id}
           slug={topic.slug}
           title={topic.title}
-          // setTopicId={setTopicId}
           onTopicSelect={onTopicSelect}
         />
       ))}
