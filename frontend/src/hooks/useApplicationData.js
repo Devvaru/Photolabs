@@ -1,4 +1,4 @@
-import React, { useReducer, useEffect } from 'react';
+import { useReducer, useEffect } from 'react';
 import axios from 'axios';
 
 export const ACTIONS = {
@@ -9,7 +9,8 @@ export const ACTIONS = {
   SET_TOPIC_DATA: 'SET_TOPIC_DATA',
   GET_PHOTOS_BY_TOPIC: 'GET_PHOTOS_BY_TOPIC',
   DISPLAY_MODAL_DETAILS: 'DISPLAY_MODAL_DETAILS'
-}
+};
+
 const initialState = {
   favouritePhotoIds: [],
   displayModal: false,
@@ -44,9 +45,6 @@ const useApplicationData = () => {
 
       case ACTIONS.SET_TOPIC_DATA:
         return { ...state, topicData: action.payload };
-
-      case ACTIONS.SET_TOPIC_ID:
-        return { ...state, topicId: action.payload };
 
       case ACTIONS.GET_PHOTOS_BY_TOPIC:
         return { ...state, photoData: action.payload };
@@ -96,6 +94,7 @@ const useApplicationData = () => {
     dispatch({ type: ACTIONS.CLOSE_PHOTO_MODAL })
   };
 
+  // display photos based on topic
   const onTopicSelect = (id) => {
     axios.get(`/api/topics/photos/${id}`)
       .then(response => response.data)
@@ -103,7 +102,7 @@ const useApplicationData = () => {
       .catch((error) => {
         console.error("Error fetching photos by topic: ", error);
       });
-  }
+  };
 
   return { state, updateFavouritePhotoIds, displayModalPhotoDetails, onClosePhotoDetailsModal, onTopicSelect };
 }

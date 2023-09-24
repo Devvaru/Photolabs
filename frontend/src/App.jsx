@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React from 'react';
 
 import HomeRoute from 'routes/HomeRoute';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
@@ -31,6 +31,7 @@ const App = () => {
       />
       {state.displayModal &&
         <PhotoDetailsModal
+          photoData={state.photoData}
           favouritePhotoIds={state.favouritePhotoIds}
           updateFavouritePhotoIds={updateFavouritePhotoIds}
           onClosePhotoDetailsModal={onClosePhotoDetailsModal}

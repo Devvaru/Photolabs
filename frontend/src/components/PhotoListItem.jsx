@@ -1,7 +1,7 @@
-import React, { useCallback, useState } from 'react';
+import React from 'react';
 import PhotoFavButton from 'components/PhotoFavButton';
 
-import "../styles/PhotoListItem.scss";
+import '../styles/PhotoListItem.scss';
 
 const PhotoListItem = (props) => {
 
