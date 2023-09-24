@@ -26,17 +26,18 @@ const PhotoDetailsModal = (props) => {
             <p className="photo-list__user-info  photo-list__user-location">{displayModalDetails.city} {displayModalDetails.country} </p>
           </div>
         </div>
-      </div>
 
-      <div>
-        <PhotoList
-          photoData={similarPhotos}
-          favouritePhotoIds={favouritePhotoIds}
-          updateFavouritePhotoIds={updateFavouritePhotoIds}
-          displayModalDetails={displayModalDetails}
-          displayModal={displayModal}
-          onClosePhotoDetailsModal={onClosePhotoDetailsModal}
-        />
+        <div>
+          <div className="photo-details-modal__header">Similar Photos</div>
+          <PhotoList
+            photoData={similarPhotos}
+            favouritePhotoIds={favouritePhotoIds}
+            updateFavouritePhotoIds={updateFavouritePhotoIds}
+            displayModalDetails={displayModalDetails}
+            displayModal={displayModal}
+            onClosePhotoDetailsModal={onClosePhotoDetailsModal}
+          />
+        </div>
       </div>
     </div>
   )
