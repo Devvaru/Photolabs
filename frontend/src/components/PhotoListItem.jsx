@@ -26,7 +26,7 @@ const PhotoListItem = (props) => {
           photoID={id}
           isFavourited={isFavourited}
           updateFavouritePhotoIds={updateFavouritePhotoIds} />
-        <img onClick={modalDisplay} className="photo-list__image" src={urls.regular} />
+        <img onClick={modalDisplay} className="photo-list__image" src={urls.full} />
       </div>
 
       {/* Photo list item details*/}
