@@ -5,7 +5,7 @@ import '../styles/PhotoListItem.scss';
 
 const PhotoListItem = (props) => {
 
-  const { photo, isFavourited, updateFavouritePhotoIds, displayModalPhotoDetails } = props;
+  const { photo, favouritePhotoIds, updateFavouritePhotoIds, displayModalPhotoDetails } = props;
   const { id, location, urls, user, similar_photos } = photo;
 
   const modalDisplay = () => {
@@ -24,7 +24,7 @@ const PhotoListItem = (props) => {
       <div>
         <PhotoFavButton
           photoID={id}
-          isFavourited={isFavourited}
+          favouritePhotoIds={favouritePhotoIds}
           updateFavouritePhotoIds={updateFavouritePhotoIds} />
         <img onClick={modalDisplay} className="photo-list__image" src={urls.regular} />
       </div>

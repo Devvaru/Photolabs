@@ -13,7 +13,7 @@ const PhotoList = (props) => {
         <PhotoListItem
           key={photo.id}
           photo={photo}
-          isFavourited={favouritePhotoIds.includes(photo.id)}
+          favouritePhotoIds={favouritePhotoIds}
           updateFavouritePhotoIds={updateFavouritePhotoIds}
           PhotoDetailsModal={PhotoDetailsModal}
           displayModal={displayModal}
