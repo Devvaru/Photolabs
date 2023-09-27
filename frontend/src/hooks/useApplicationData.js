@@ -23,12 +23,14 @@ const useApplicationData = () => {
   const reducer = (state, action) => {
     switch (action.type) {
       case ACTIONS.FAV_PHOTO_ADDED:
+        // add favourite to favourites array
         return {
           ...state,
           favouritePhotoIds: [...state.favouritePhotoIds, action.payload],
         };
 
       case ACTIONS.FAV_PHOTO_REMOVED:
+        // remove favourite from favourites array if it already exists
         return {
           ...state,
           favouritePhotoIds: state.favouritePhotoIds.filter(
@@ -37,6 +39,7 @@ const useApplicationData = () => {
         };
 
       case ACTIONS.DISPLAY_MODAL_DETAILS:
+        // opens and displays photo details in modal
         const { data, isOpen } = action.payload;
         return { ...state, displayModalDetails: { ...data }, displayModal: isOpen };
 

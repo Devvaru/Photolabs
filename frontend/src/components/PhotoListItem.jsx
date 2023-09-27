@@ -8,12 +8,14 @@ const PhotoListItem = (props) => {
   const { photo, favouritePhotoIds, updateFavouritePhotoIds, displayModalPhotoDetails } = props;
   const { id, location, urls, user, similar_photos } = photo;
 
+  // deconstructs photo properties to be displayed in modal
   const modalDisplay = () => {
     const { location, urls, user } = photo;
     const { full } = urls;
     const { username, name, profile } = user;
     const { city, country } = location;
 
+    // sets items to be displayed
     displayModalPhotoDetails && displayModalPhotoDetails({ city, country, full, username, name, profile, similar_photos }, true);
   };
 

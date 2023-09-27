@@ -6,7 +6,7 @@ import PhotoList from '../components/PhotoList';
 
 const PhotoDetailsModal = (props) => {
 
-  const { onClosePhotoDetailsModal, displayModal, displayModalDetails, photoData, favouritePhotoIds, updateFavouritePhotoIds } = props;
+  const { onClosePhotoDetailsModal, displayModal, displayModalDetails, favouritePhotoIds, updateFavouritePhotoIds } = props;
 
   const similarPhotos = Object.values(displayModalDetails.similar_photos);
 

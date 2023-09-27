@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import FavIcon from './FavIcon';
 import '../styles/PhotoFavButton.scss';
@@ -11,6 +11,7 @@ function PhotoFavButton(props) {
     updateFavouritePhotoIds(photoID);
   }
 
+  // FavIcon is displayed whether photo is in favourites array
   const selected = favouritePhotoIds.includes(photoID);
 
   return (
