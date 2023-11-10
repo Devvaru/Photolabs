@@ -6,7 +6,7 @@ import PhotoListItem from './PhotoListItem';
 const PhotoList = (props) => {
 
   const { favouritePhotoIds, updateFavouritePhotoIds, displayModalDetails, displayModalPhotoDetails, PhotoDetailsModal, displayModal, photoData } = props;
-  
+
   return (
     <ul className="photo-list">
       {photoData.map((photo) => (
@@ -18,7 +18,7 @@ const PhotoList = (props) => {
           PhotoDetailsModal={PhotoDetailsModal}
           displayModal={displayModal}
           displayModalDetails={displayModalDetails}
-          displayModalPhotoDetails={displayModalPhotoDetails &&displayModalPhotoDetails}
+          displayModalPhotoDetails={displayModalPhotoDetails && displayModalPhotoDetails}
         />
       ))}
     </ul>

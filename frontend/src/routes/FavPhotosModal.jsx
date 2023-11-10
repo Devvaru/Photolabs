@@ -2,12 +2,13 @@ import React from 'react';
 
 import '../styles/FavPhotosModal.scss'
 import closeSymbol from '../assets/closeSymbol.svg';
-import PhotoList from '../components/PhotoList';
 
 const FavPhotosModal = (props) => {
 
-  const { photoData, favouritePhotoIds, updateFavouritePhotoIds, displayModalFavourites, 
-  displayFavouritesModalDetails, closeFavouritesModal } = props;
+  const { photoData, favouritePhotoIds, closeFavouritesModal } = props;
+
+  const favouritedPhotos = photoData.filter(photo => favouritePhotoIds.includes(photo.id));
+  console.log(favouritedPhotos)
 
   return (
     <div className="photo-details-modal">
@@ -15,20 +16,23 @@ const FavPhotosModal = (props) => {
       <button className="photo-details-modal__close-button">
         <img src={closeSymbol} onClick={closeFavouritesModal} alt="close symbol" />
       </button>
-      <div>hello world</div>
-      {/* <div className="photo-details-modal__images">
+      <div className="photo-details-modal__images">
         <div>
           <div className="photo-details-modal__header">Favourites</div>
-          <PhotoList
-            favouritePhotoIds={favouritePhotoIds}
-            updateFavouritePhotoIds={updateFavouritePhotoIds}
-            photoData={similarPhotos}
-            displayFavouritesModalDetails={displayFavouritesModalDetails}
-            displayModal={displayModal}
-            onClosePhotoDetailsModal={onClosePhotoDetailsModal}
-          />
+          {favouritedPhotos.map(photo => (
+            <div key={photo.id}>
+              <img src={photo.urls.regular} className="photo-details-modal__image" />
+              <div className="photo-details-modal__photographer-details photo-details-modal__header">
+                <img src={photo.user.profile} className="photo-list__user-profile" />
+                <div className="photo-list__user-info">
+                  <p className="photo-list__user-info"> {photo.user.username}</p>
+                  <p className="photo-list__user-info  photo-list__user-location">{photo.location.city} {photo.location.country} </p>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
-      </div> */}
+      </div>
     </div>
   )
 };

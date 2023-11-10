@@ -16,7 +16,6 @@ const App = () => {
     displayModalPhotoDetails,
     onClosePhotoDetailsModal,
     openFavouritesModal,
-    displayModalFavourites,
     closeFavouritesModal,
     onTopicSelect,
   } = useApplicationData();
@@ -47,8 +46,6 @@ const App = () => {
           photoData={state.photoData}
           favouritePhotoIds={state.favouritePhotoIds}
           updateFavouritePhotoIds={updateFavouritePhotoIds}
-          displayModalFavourites={displayModalFavourites}
-          displayFavouritesModalDetails={state.displayFavouritesModalDetails}
           closeFavouritesModal={closeFavouritesModal}
         />}
     </div>
