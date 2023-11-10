@@ -3,9 +3,9 @@ import FavIcon from './FavIcon';
 
 import '../styles/FavBadge.scss';
 
-const FavBadge = ({ displayAlert }) => {
+const FavBadge = ({ displayAlert, onClick }) => {
   return (
-    <div className='fav-badge'>
+    <div className='fav-badge' onClick={onClick}>
       <FavIcon
         displayAlert={!!displayAlert}
         selected={true} />

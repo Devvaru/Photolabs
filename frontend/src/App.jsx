@@ -2,6 +2,7 @@ import React from 'react';
 
 import HomeRoute from 'routes/HomeRoute';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
+import FavPhotosModal from 'routes/FavPhotosModal';
 import useApplicationData from 'hooks/useApplicationData';
 
 import './App.scss';
@@ -14,6 +15,9 @@ const App = () => {
     updateFavouritePhotoIds,
     displayModalPhotoDetails,
     onClosePhotoDetailsModal,
+    openFavouritesModal,
+    displayModalFavourites,
+    closeFavouritesModal,
     onTopicSelect,
   } = useApplicationData();
 
@@ -26,8 +30,9 @@ const App = () => {
         topicData={state.topicData}
         onTopicSelect={onTopicSelect}
         displayModal={state.displayModal}
-        onClosePhotoDetailsModal={onClosePhotoDetailsModal}
         displayModalPhotoDetails={displayModalPhotoDetails}
+        onClosePhotoDetailsModal={onClosePhotoDetailsModal}
+        openFavouritesModal={openFavouritesModal}
       />
       {state.displayModal &&
         <PhotoDetailsModal
@@ -36,6 +41,15 @@ const App = () => {
           updateFavouritePhotoIds={updateFavouritePhotoIds}
           onClosePhotoDetailsModal={onClosePhotoDetailsModal}
           displayModalDetails={state.displayModalDetails}
+        />}
+      {state.displayFavouritesModal &&
+        <FavPhotosModal
+          photoData={state.photoData}
+          favouritePhotoIds={state.favouritePhotoIds}
+          updateFavouritePhotoIds={updateFavouritePhotoIds}
+          displayModalFavourites={displayModalFavourites}
+          displayFavouritesModalDetails={state.displayFavouritesModalDetails}
+          closeFavouritesModal={closeFavouritesModal}
         />}
     </div>
   );

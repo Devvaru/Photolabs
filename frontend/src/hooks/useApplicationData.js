@@ -8,13 +8,18 @@ export const ACTIONS = {
   SET_PHOTO_DATA: 'SET_PHOTO_DATA',
   SET_TOPIC_DATA: 'SET_TOPIC_DATA',
   GET_PHOTOS_BY_TOPIC: 'GET_PHOTOS_BY_TOPIC',
-  DISPLAY_MODAL_DETAILS: 'DISPLAY_MODAL_DETAILS'
+  DISPLAY_MODAL_DETAILS: 'DISPLAY_MODAL_DETAILS',
+  OPEN_MODAL_FAVOURITES: 'OPEN_MODAL_FAVOURITES',
+  DISPLAY_MODAL_FAVOURITES: 'DISPLAY_MODAL_FAVOURITES',
+  CLOSE_MODAL_FAVOURITES: 'CLOSE_MODAL_FAVOURITES'
 };
 
 const initialState = {
   favouritePhotoIds: [],
   displayModal: false,
   displayModalDetails: {},
+  displayFavouritesModal: false,
+  displayFavouritesModalDetails: {},
   photoData: [],
   topicData: []
 };
@@ -39,6 +44,16 @@ const useApplicationData = () => {
       case ACTIONS.DISPLAY_MODAL_DETAILS:
         const { data, isOpen } = action.payload;
         return { ...state, displayModalDetails: { ...data }, displayModal: isOpen };
+
+      case ACTIONS.OPEN_MODAL_FAVOURITES:
+        return { ...state, displayFavouritesModal: true };
+
+      case ACTIONS.DISPLAY_MODAL_FAVOURITES:
+        const { favData } = action.payload;
+        return { ...state, displayFavouritesModalDetails: { ...favData } };
+
+      case ACTIONS.CLOSE_MODAL_FAVOURITES:
+        return { ...state, displayFavouritesModal: false };
 
       case ACTIONS.SET_PHOTO_DATA:
         return { ...state, photoData: action.payload };
@@ -89,6 +104,18 @@ const useApplicationData = () => {
     dispatch({ type: ACTIONS.DISPLAY_MODAL_DETAILS, payload: { data, isOpen } });
   };
 
+  const openFavouritesModal = () => {
+    dispatch({ type: ACTIONS.OPEN_MODAL_FAVOURITES });
+  };
+
+  const displayModalFavourites = (favData) => {
+    dispatch({ type: ACTIONS.DISPLAY_MODAL_FAVOURITES, payload: { favData } });
+  };
+
+  const closeFavouritesModal = () => {
+    dispatch({ type: ACTIONS.CLOSE_MODAL_FAVOURITES });
+  };
+
   // closes modal
   const onClosePhotoDetailsModal = () => {
     dispatch({ type: ACTIONS.CLOSE_PHOTO_MODAL })
@@ -104,7 +131,7 @@ const useApplicationData = () => {
       });
   };
 
-  return { state, updateFavouritePhotoIds, displayModalPhotoDetails, onClosePhotoDetailsModal, onTopicSelect };
+  return { state, updateFavouritePhotoIds, displayModalPhotoDetails, onClosePhotoDetailsModal, openFavouritesModal, displayModalFavourites, closeFavouritesModal, onTopicSelect };
 }
 
 export default useApplicationData;
