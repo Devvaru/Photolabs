@@ -8,7 +8,6 @@ const FavPhotosModal = (props) => {
   const { photoData, favouritePhotoIds, closeFavouritesModal } = props;
 
   const favouritedPhotos = photoData.filter(photo => favouritePhotoIds.includes(photo.id));
-  console.log(favouritedPhotos)
 
   return (
     <div className="photo-details-modal">
