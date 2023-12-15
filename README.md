@@ -1,11 +1,11 @@
 # Photolabs
-The PhotoLabs project for the Web Development React course programming.
+Photolabs is a React based web app where you can view and favourite the photos of photographers, as well as search photos by topic. Built using React.js, Express, PostgreSQL, Node.js, Axios, and Sass.
 
 ## Features
 
 - Find photos by Topic
-- Add and remove photos to your favourites
-- View larger version of each photo
+- Add and remove photos from your favourites
+- Modal view of a larger version of each photo
 - Find similar photos
 
 ## Getting Started
